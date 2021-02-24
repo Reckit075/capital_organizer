@@ -71,28 +71,23 @@ export default {
         home: [
           {
             icon: 'mdi-close',
-            title: 'example item 1',
+            title: 'home',
             linkTo: 'employees',
           },
           {
             icon: 'mdi-church',
-            title: 'example item 2',
+            title: 'stats',
             linkTo: 'freelancers',
           },
           {
             icon: 'mdi-adobe-acrobat',
-            title: 'example item 3',
+            title: 'actions',
             linkTo: 'teams',
           },
           {
             icon: 'mdi-cigar',
-            title: 'example item 4',
+            title: 'settings',
             linkTo: 'guests',
-          },
-          {
-            icon: 'mdi-dog-side',
-            title: 'example item 5',
-            linkTo: 'contacts',
           },
         ],
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Capital Organizer Main Page</h1>
-    <Form />
+    <Form form-type="login"></Form>
   </div>
 </template>
 

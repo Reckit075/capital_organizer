@@ -1,6 +1,13 @@
 <template>
-  <v-form @submit="registerUser" ref="form" method="post" v-model="valid" lazy-validation>
+  <v-form
+    @submit="loginUser"
+    ref="form"
+    method="post"
+    v-model="valid"
+    lazy-validation
+  >
     <v-container>
+      <p>to jest formularz typu : {{formType}}</p>
       <v-row>
         <v-col cols="12" md="3">
           <v-text-field
@@ -18,13 +25,13 @@
             :rules="passwordRules"
             :type="show ? 'text' : 'password'"
             name="input-10-1"
-            label="Normal with hint text"
+            label="password"
             hint="At least 8 characters"
             counter
             @click:append="show = !show"
           ></v-text-field>
         </v-col>
-        <v-col cols="10" md="3">
+        <v-col v-if="formType === 'register'" cols="10" md="3">
           <v-text-field
             v-model="posts.email"
             :rules="emailRules"
@@ -53,6 +60,7 @@ import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
 export default {
+  props: ["formType"],
   data: () => ({
     valid: true,
     show: false,
@@ -79,21 +87,21 @@ export default {
       this.$refs.form.validate();
     },
     registerUser(e) {
-      console.log(this.posts);
-      this.axios.post("http://localhost:4000/users/create",
-      {
-        name:this.posts.name,
-        email:this.posts.email,
-        password:this.posts.password
-      },
-      {
-        headers:{
-          'Content-Type': 'application/json'
-        }
-      })
-      .then((response) => {
-        console.log(response)
-      })
+      this.axios
+        .post(
+          "http://localhost:4000/users/create",this.posts)
+        .then((response) => {
+          console.log(response);
+        });
+      e.preventDefault();
+    },
+    loginUser(e) {
+      this.axios
+        .post(
+          "http://localhost:4000/users/login",this.posts)
+        .then((response) => {
+          console.log(response);
+        });
       e.preventDefault();
     },
   },

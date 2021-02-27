@@ -75,7 +75,7 @@ export default {
             linkTo: 'employees',
           },
           {
-            icon: 'mdi-church',
+            icon: 'mdi-chart-box',
             title: 'stats',
             linkTo: 'freelancers',
           },
@@ -85,7 +85,7 @@ export default {
             linkTo: 'teams',
           },
           {
-            icon: 'mdi-cigar',
+            icon: 'mdi-api',
             title: 'settings',
             linkTo: 'guests',
           },

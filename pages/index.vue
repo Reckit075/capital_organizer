@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>DRAWER ITEM 1 CONTENT - STARTING PAGE</h1>
+    <h1>Capital Organizer Main Page</h1>
     <Form />
   </div>
 </template>

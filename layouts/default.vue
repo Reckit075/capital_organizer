@@ -218,7 +218,7 @@
     <v-footer
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }} - example footer</span>
+      <span>&copy; {{ new Date().getFullYear() }} - Mateusz</span>
     </v-footer>
   </v-app>
 </template>

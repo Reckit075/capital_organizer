@@ -1,13 +1,12 @@
 <template>
   <v-form
-    @submit="loginUser"
+    @submit="chooseAction"
     ref="form"
     method="post"
     v-model="valid"
     lazy-validation
   >
     <v-container>
-      <p>to jest formularz typu : {{formType}}</p>
       <v-row>
         <v-col cols="12" md="3">
           <v-text-field
@@ -85,6 +84,11 @@ export default {
   methods: {
     validate() {
       this.$refs.form.validate();
+    },
+    chooseAction(e){
+      e.preventDefault();
+      if(this.$route.path == "/user/login") this.loginUser(e)
+      else if(this.$route.path == "/user/register") this.registerUser(e)
     },
     registerUser(e) {
       this.axios

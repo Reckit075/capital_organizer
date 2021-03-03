@@ -72,20 +72,20 @@ export default {
           {
             icon: 'mdi-close',
             title: 'home',
-            linkTo: 'employees',
+            linkTo: '/',
           },
           {
-            icon: 'mdi-chart-box',
+            icon: 'mdi-cloud',
             title: 'stats',
-            linkTo: 'freelancers',
+            linkTo: 'stats',
           },
           {
-            icon: 'mdi-adobe-acrobat',
+            icon: 'mdi-pen',
             title: 'actions',
-            linkTo: 'teams',
+            linkTo: 'actions',
           },
           {
-            icon: 'mdi-api',
+            icon: 'mdi-settings',
             title: 'settings',
             linkTo: 'guests',
           },

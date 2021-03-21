@@ -30,12 +30,13 @@
     "lru-cache": "^5.1.1",
     "minify-css-string": "^1.0.0",
     "node-gyp": "^7.0.0",
-    "nuxt": "^2.14.5",
+    "nuxt": "^2.15.3",
     "nuxt-i18n": "^6.15.4",
     "nuxt-purgecss": "^1.0.0",
     "nuxt-webfontloader": "^1.1.0",
     "nuxtjs-mdi-font": "^1.0.2",
     "purgecss-webpack-plugin": "^2.3.0",
+    "sass-loader": "^10.1.1",
     "vue": "^2.6.12",
     "vue-axios": "^3.2.4",
     "vue-fragment": "^1.5.1",
@@ -70,8 +71,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.2.2",
     "jest": "^24.9.0",
-    "vue-jest": "^4.0.0-0",
-    "sass-loader": "9.0.0",
-    "source-map-loader": "^1.1.2"
+    "source-map-loader": "^1.1.2",
+    "vue-jest": "^4.0.0-0"
   }
 }

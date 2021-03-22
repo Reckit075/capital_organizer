@@ -6,24 +6,32 @@
     v-model="valid"
     lazy-validation
   >
-    <v-text-field label="Amount" value="10.00" prefix="$"></v-text-field>
-    <v-select :items="items" label="Choose type" solo></v-select>
+    <v-text-field
+      label="Amount"
+      type="number"
+      prefix="$"
+      v-model="posts.amount"
+      :rules="amountRules"
+      required
+    ></v-text-field>
+    <v-select
+      :items="items"
+      label="Choose type"
+      solo
+      v-model="posts.type"
+      required
+      :rules="typeRules"
+    ></v-select>
     <v-btn
       elevation="4"
       :disabled="!valid"
       color="success"
       large
       type="submit"
+      @click="validate"
       >submit</v-btn
     >
-    <v-btn
-      elevation="4"
-      :disabled="!valid"
-      color="success"
-      large
-      type="submit"
-      >reset</v-btn
-    >
+    <v-btn elevation="4" color="warning" large @click="reset">reset</v-btn>
   </v-form>
 </template>
 <script>
@@ -36,10 +44,26 @@ Vue.use(VueAxios, axios);
 export default {
   data: () => ({
     valid: true,
+    show: false,
     items: ["income", "expenditure"],
+    amountRules: [(v) => !!v || "Amount is required"],
+    typeRules: [(v) => !!v || "Type is required"],
+    posts: {
+      amount: 10,
+      type: "",
+    },
   }),
   methods: {
-    sendData() {
+    validate() {
+      this.$refs.form.validate();
+    },
+    reset() {
+      this.$refs.form.reset();
+    },
+    sendData(e) {
+      e.preventDefault();
+      console.log(this.posts.amount, this.posts.type);
+      console.log("data send");
       //send Data to server
       //get response from server
     },

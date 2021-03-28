@@ -102,7 +102,7 @@ export default {
     loginUser(e) {
       this.axios
         .post(
-          "http://localhost:4000/users/login",this.posts)
+          `http://localhost:4000/users/sesion`,this.posts)
         .then((response) => {
           console.log(response);
         });

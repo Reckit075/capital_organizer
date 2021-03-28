@@ -55,6 +55,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import { mapMutations } from 'vuex'
 
 Vue.use(VueAxios, axios);
 
@@ -104,7 +105,7 @@ export default {
         .post(
           `http://localhost:4000/users/sesion`,this.posts)
         .then((response) => {
-          console.log(response);
+          this.$store.commit("setUserId",response.data.id)
         });
       e.preventDefault();
     },

@@ -62,10 +62,11 @@ export default {
     },
     sendData(e) {
       e.preventDefault();
-      console.log(this.posts.amount, this.posts.type);
-      console.log("data send");
-      //send Data to server
-      //get response from server
+      this.axios
+        .post("http://localhost:4000/users/", this.posts)
+        .then((response) => {
+          console.log(response);
+        });
     },
   },
 };

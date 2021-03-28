@@ -62,7 +62,7 @@ export default {
   props: ["formType"],
   data: () => ({
     valid: true,
-    
+    show:false,
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => (v && v.length <= 10) || "Name must be less than 10 characters",
@@ -93,7 +93,7 @@ export default {
     registerUser(e) {
       this.axios
         .post(
-          "http://localhost:4000/users/create",this.posts)
+          "http://localhost:4000/users/",this.posts)
         .then((response) => {
           console.log(response);
         });

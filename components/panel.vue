@@ -9,19 +9,34 @@
     <v-text-field
       label="Amount"
       type="number"
-      prefix="$"
       v-model="posts.amount"
       :rules="amountRules"
       required
     ></v-text-field>
+    <v-text-field
+      label="Description"
+      type="text"
+      v-model="posts.description"
+      :rules="descriptionRules"
+      required
+    ></v-text-field>
     <v-select
-      :items="items"
-      label="Choose type"
+      :items="expenditure"
+      label="Choose type of expenditure"
       solo
-      v-model="posts.type"
+      v-model="posts.typeOfExpenditure"
       required
       :rules="typeRules"
     ></v-select>
+    <v-select
+      :items="currency"
+      label="Choose type of currency"
+      solo
+      v-model="posts.currency"
+      required
+      :rules="typeRules"
+    ></v-select>
+    <v-date-picker v-model="posts.date"></v-date-picker>
     <v-btn
       elevation="4"
       :disabled="!valid"
@@ -45,12 +60,18 @@ export default {
   data: () => ({
     valid: true,
     show: false,
-    items: ["income", "expenditure"],
+    expenditure: ["income", "expenditure"],
+    currency: ["USD", "EUR", "PLN"],
     amountRules: [(v) => !!v || "Amount is required"],
+    descriptionRules: [(v) => !!v || "Description is required"],
     typeRules: [(v) => !!v || "Type is required"],
     posts: {
       amount: 10,
-      type: "",
+      description: '',
+      typeOfExpenditure: '',
+      currency: '',
+      date: new Date().toISOString().substr(0, 10),
+      userId: this.$store.state.userID
     },
   }),
   methods: {
@@ -63,7 +84,7 @@ export default {
     sendData(e) {
       e.preventDefault();
       this.axios
-        .post("http://localhost:4000/users/", this.posts)
+        .put("http://localhost:4000/funds/", this.posts)
         .then((response) => {
           console.log(response);
         });

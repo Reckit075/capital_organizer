@@ -32,6 +32,6 @@ $ npm run generate
 ## Technologies
 
 Project is created with:
-- vue version: 2.16.12
+- vue version: 2.6.11
 - vuetify version: 2.4.4
-- nuxt version: 2.14.5
+- vuex version: 3.4.0

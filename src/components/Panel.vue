@@ -87,7 +87,7 @@ computed: mapGetters(['getUserId']),
       e.preventDefault();
       this.posts.userId = this.getUserId;
       this.axios
-        .put("http://localhost:4000/funds/", this.posts)
+        .post("http://localhost:4000/capitals/", this.posts)
         .then((response) => {
           console.log(response);
         });

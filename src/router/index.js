@@ -1,34 +1,32 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Authorisation from '../views/Authorisation.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Authorisation from "../views/Authorisation.vue";
 
-Vue.use(VueRouter)
+import App from "../App.vue"
+
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    component: Home
+    path: "/",
+    component: App,
+    children: [
+      {
+        path: "/user/login",
+        component: Authorisation,
+      },
+      {
+        path: "/user/register",
+        component: Authorisation,
+      }
+    ],
   },
-  {
-    path: '/user/login',
-    component: Authorisation
-  },
-  {
-    path: '/user/register',
-    component: Authorisation
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

@@ -1,32 +1,32 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Authorisation from "../views/Authorisation.vue";
-
-import App from "../App.vue"
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: "/",
-    component: App,
-    children: [
-      {
-        path: "/user/login",
-        component: Authorisation,
-      },
-      {
-        path: "/user/register",
-        component: Authorisation,
-      }
-    ],
-  },
-];
+const AuthRouter = [{
+  path: '/',
+  component: () => import('../AuthView.vue'),
+  children: [{
+    path: '/user/login',
+    component: () => import('../views/Auth/Login.vue'),
+    meta: {
+      title: 'Login'
+    }
+  }, {
+    path: '/user/register',
+    component: () => import('../views/Auth/Register.vue'),
+    meta: {
+      title: 'Register'
+    }
+  }],
+}];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
-  routes,
+  routes: [
+    ...AuthRouter
+  ],
 });
 
 export default router;

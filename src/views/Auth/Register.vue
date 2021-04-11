@@ -1,17 +1,16 @@
 <template>
   <div class="home">
-    <Panel />
+    <Form form-type="register" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Panel from '@/components/Panel.vue';
+import Form from '@/components/Form.vue';
 
 export default {
-  name: 'Home',
+  name: 'Register',
   components: {
-    Panel,
+    Form,
   },
 };
 </script>

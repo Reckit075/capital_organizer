@@ -1,15 +1,16 @@
 <template>
-  <div class="home">
-    <Panel />
-  </div>
+  <v-app>
+    <v-main>
+      <Panel />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-// @ is an alias to /src
 import Panel from '@/components/Panel.vue';
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     Panel,
   },

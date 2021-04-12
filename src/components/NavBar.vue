@@ -23,31 +23,37 @@
             v-model="group"
             active-class="deep-purple--text text--accent-4"
         >
-          <v-list-item>
+          <v-list-item to="/">
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/user/login">
+          <v-list-item to="/panel">
             <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
+              <v-icon>mdi-ballot</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>panel</v-list-item-title>
+          </v-list-item>
+          <v-list-item to="/stats">
+            <v-list-item-icon>
+              <v-icon>mdi-chart-bar</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>stats</v-list-item-title>
+          </v-list-item>
+          <v-list-item to="/auth/login">
+            <v-list-item-icon>
+              <v-icon>mdi-login</v-icon>
             </v-list-item-icon>
             <v-list-item-title>login</v-list-item-title>
           </v-list-item>
-          <v-list-item to="/user/register">
+
+          <v-list-item to="/auth/register">
             <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
+              <v-icon>mdi-account-plus</v-icon>
             </v-list-item-icon>
             <v-list-item-title>register</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Account</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>

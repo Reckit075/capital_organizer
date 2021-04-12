@@ -1,7 +1,6 @@
 <template>
   <v-app>
-    <NavBar />
-
+      <NavBar />
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -9,15 +8,13 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue';
+// @ is an alias to /src
+import NavBar from "@/components/NavBar.vue";
 
 export default {
-  name: 'AuthView',
-
-  components: {NavBar},
-
-  data: () => ({
-    //
-  }),
+  name: "Home",
+  components: {
+    NavBar,
+  },
 };
 </script>

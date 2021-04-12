@@ -1,14 +1,12 @@
 <template>
-  <div class="home">
-    <Form formType="login" />
-  </div>
+  <Form formType="login" />
 </template>
 
 <script>
-import Form from '@/components/Form.vue';
+import Form from "@/components/Form.vue";
 
 export default {
-  name: 'Login',
+  name: "Login",
   components: {
     Form,
   },

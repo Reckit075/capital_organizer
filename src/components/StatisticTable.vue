@@ -1,4 +1,4 @@
-<template>
+<template >
   <v-data-table
     :headers="headers"
     :items="desserts"
@@ -40,3 +40,9 @@ export default {
   },
 };
 </script>
+<style>
+.elevation-1 {
+  width: 75vw;
+  margin: auto;
+}
+</style>

@@ -10,10 +10,10 @@ export default new Vuex.Store({
   getters: {
     getUserId: state => {
       return state.userId;
-    }
+    },
   },
   mutations: {
-    setUserId(state,userId) {
+    setUserId(state, userId) {
       state.userId = userId;
     },
   },

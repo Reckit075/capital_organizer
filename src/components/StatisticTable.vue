@@ -7,43 +7,36 @@
   ></v-data-table>
 </template>
 <script>
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+
+Vue.use(VueAxios, axios);
 export default {
   data: () => ({
     headers: [
-      {
-        text: "amount",
-        align: "start",
-        sortable: false,
-        value: "amount",
-      },
+      { text: "amount", align: "start", value: "amount" },
       { text: "description", sortable: false, value: "description" },
       { text: "typeOfExpenditure", value: "typeOfExpenditure" },
       { text: "currency", sortable: false, value: "currency" },
       { text: "date(d.m.y)", value: "date" },
     ],
-    desserts: [
-      {
-        amount: "5",
-        description: 'nice nike shoes',
-        typeOfExpenditure: 'expenditure',
-        currency: '$',
-        date: '24.11.2020',
-      },
-      {
-        amount: "23",
-        description: 'ticket to cinema',
-        typeOfExpenditure: 'expenditure',
-        currency: 'PLN',
-        date: '16.01.2021',
-      },
-      {
-        amount: "50",
-        description: 'vacum for granddad',
-        typeOfExpenditure: 'expenditure',
-        currency: '$',
-        date: '5.12.2020',
-      },
-    ],
+    desserts: [],
   }),
+  methods: {
+    getData() {
+      console.log(this.$store.state.userId);
+      this.axios
+        .get(
+          `http://localhost:4000/capitals/?userId=${this.$store.state.userId}`
+        )
+        .then((response) => {
+          this.desserts = response.data.capitals;
+        });
+    },
+  },
+  beforeMount() {
+    this.getData();
+  },
 };
 </script>

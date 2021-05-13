@@ -15,7 +15,7 @@ Simple application to save money and manage home capital.
 $ npm install
 
 # serve with hot reload at localhost:3000
-$ npm run dev
+$ npm run serve
 
 # build for production and launch server
 $ npm run build
@@ -32,6 +32,7 @@ $ npm run generate
 ## Technologies
 
 Project is created with:
-- vue version: 2.16.12
-- vuetify version: 2.4.4
-- nuxt version: 2.14.5
+- vue: 2.6.11
+- vuetify: 2.4.0
+- vue-router: 3.2.0
+- vuex: 3.4.0

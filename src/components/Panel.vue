@@ -53,6 +53,12 @@
         @click="reset"
     >reset
     </v-btn>
+    <Alert
+        v-if="showAlert"
+        :success="alertSuccess"
+        :text="alertText"
+        class="alert"
+      ></Alert>
   </v-form>
 </template>
 <script>
@@ -60,6 +66,7 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import { mapGetters } from 'vuex';
+import Alert from "../components/Alert";
 
 Vue.use(VueAxios, axios);
 
@@ -69,6 +76,9 @@ export default {
   data: () => ({
     valid: true,
     show: false,
+    showAlert: false,
+    alertSuccess: "",
+    alertText: "",
     expenditure: ['income', 'expenditure'],
     currency: ['USD', 'EUR', 'PLN'],
     amountRules: [(v) => !!v || 'Amount is required'],
@@ -96,9 +106,23 @@ export default {
       this.axios
           .post('http://localhost:4000/capitals/', this.posts)
           .then((response) => {
-            console.log(response);
-          });
+            console.log(response)
+            this.showAlert = true,
+            this.alertSuccess = 'true',
+            this.alertText = "added successfully"
+          }).catch((error) => {
+            console.log(error)
+            this.showAlert = true,
+            this.alertSuccess = 'false',
+            this.alertText = "Something went wrong😥, please try again."
+          })
     },
   },
+  components: { Alert },
 };
 </script>
+<style>
+.alert {
+  margin-top: 20px;
+}
+</style>

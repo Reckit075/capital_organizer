@@ -7,6 +7,9 @@
 
 ## General info
 Simple application to save money and manage home capital.
+Please remember that the application is still under development so it may not contain essential functions
+(for example alert after login/register)
+Thank you for your understanding.
 
 ## Setup
 

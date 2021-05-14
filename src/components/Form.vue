@@ -48,6 +48,12 @@
         @click="validate"
         >submit
       </v-btn>
+      <Alert
+        v-if="showAlert"
+        :success="alertSuccess"
+        :text="alertText"
+        class="alert"
+      ></Alert>
     </v-container>
   </v-form>
 </template>
@@ -55,6 +61,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import Alert from "../components/Alert";
 
 Vue.use(VueAxios, axios);
 export default {
@@ -62,7 +69,10 @@ export default {
   props: ["formType"],
   data: () => ({
     valid: true,
-    show: false,
+    show: true,
+    showAlert: false,
+    alertSuccess: "",
+    alertText: "",
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => (v && v.length <= 10) || "Name must be less than 10 characters",
@@ -96,9 +106,15 @@ export default {
         .post("http://localhost:4000/users/", this.posts)
         .then((response) => {
           console.log(response);
+          this.showAlert = true;
+          this.alertSuccess = "true";
+          this.alertText ="Successfully registered, now log in and use the app 😃.";
         })
-        .catch((error) => {
-          console.log("ERRRR:: ", error.response.data);
+        .catch((err) => {
+          this.showAlert = true;
+          this.alertSuccess = "false";
+          this.alertText = "Something went wrong😥, please try again.";
+          console.log(err);
         });
       e.preventDefault();
     },
@@ -108,9 +124,24 @@ export default {
         .then((response) => {
           console.log(response.data.id);
           this.$store.commit("setUserId", response.data.id);
+          this.showAlert = true;
+          this.alertSuccess = "true";
+          this.alertText = "logged in correctly";
+        })
+        .catch((err) => {
+          this.showAlert = true;
+          this.alertSuccess = "false";
+          this.alertText = "Something went wrong😥, please try again.";
+          console.log(err);
         });
       e.preventDefault();
     },
   },
+  components: { Alert },
 };
 </script>
+<style>
+.alert {
+  margin-top: 20px;
+}
+</style>

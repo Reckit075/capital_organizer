@@ -101,6 +101,7 @@ export default {
       else if (this.formType === "register") this.registerUser(e);
     },
     registerUser(e) {
+      console.log(this.posts);
       this.axios
         .post("http://localhost:4000/users/", this.posts)
         .then((response) => {

@@ -1,9 +1,10 @@
-<template>
+<template >
   <v-form
       @submit="sendData"
       ref="form"
       method="post"
       v-model="valid"
+      class='wrapper'
       lazy-validation
   >
     <v-text-field
@@ -122,7 +123,12 @@ export default {
 };
 </script>
 <style>
+<<<<<<< HEAD
 .alert {
   margin-top: 20px;
+}
+.wrapper {
+  width: 70vw;
+  margin: 0 auto
 }
 </style>

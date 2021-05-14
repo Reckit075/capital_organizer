@@ -123,7 +123,6 @@ export default {
 };
 </script>
 <style>
-<<<<<<< HEAD
 .alert {
   margin-top: 20px;
 }

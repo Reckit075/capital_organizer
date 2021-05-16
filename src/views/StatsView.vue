@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p>working in progress...</p>
     <StatisticTable />
   </div>
 </template>

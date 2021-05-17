@@ -3,6 +3,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Setup](#setup)
+* [How to use](#how-to-use)
 * [Technologies](#technologies)
 
 ## General info
@@ -31,6 +32,11 @@ $ npm run lint:fix
 # generate static project
 $ npm run generate
 ```
+## How to use
+(If you are a new user please register first)
+1.Log in to your account.
+2.Now you can add an expense or income.
+3.Or, you can see the revenue expense history.
 
 ## Technologies
 

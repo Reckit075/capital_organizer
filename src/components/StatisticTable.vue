@@ -6,7 +6,7 @@
     class="elevation-1"
     ><template v-slot:top>
       <v-toolbar flat>
-        <v-toolbar-title>My CRUD</v-toolbar-title>
+        <v-toolbar-title>Budget history</v-toolbar-title>
         <v-divider class="mx-4" inset vertical></v-divider>
         <v-spacer></v-spacer>
         <v-dialog v-model="dialog" max-width="500px">
@@ -80,7 +80,7 @@
     </template>
     <template v-slot:[`item.actions`]="{ item }">
       <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
-      <!-- <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon> -->
+      <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
     </template>
     <template v-slot:no-data>
       <v-btn color="primary" @click="init"> Reset </v-btn>
@@ -117,7 +117,7 @@ export default {
     },
     defaultItem: {
       amount: "",
-      calories: 0,
+      description: 0,
       typeOfExpenditure: 0,
       currency: "PLN",
       date: "10.10.2020",
@@ -144,7 +144,7 @@ export default {
       this.getData();
     },
     getData() {
-      console.log(this.$store.state.userId);
+      // console.log(this.$store.state.userId);
       this.axios
         .get(
           `http://localhost:4000/capitals/?userId=${this.$store.state.userId}`
@@ -166,6 +166,9 @@ export default {
     },
 
     deleteItemConfirm() {
+      this.axios.delete(
+        `http://localhost:4000/capitals/?id=${this.editedItem.id}`
+      );
       this.desserts.splice(this.editedIndex, 1);
       this.closeDelete();
     },
@@ -191,24 +194,17 @@ export default {
       } else {
         this.desserts.push(this.editedItem);
       }
-      this.axios
-        .put(
-          `http://localhost:4000/capitals/`,
-          {
-            id: this.editedItem.id,
-            amount: this.editedItem.amount,
-            description: this.editedItem.description,
-            typeOfExpenditure: this.editedItem.typeOfExpenditure,
-            currency: this.editedItem.currency,
-            date: this.editedItem.date,
-          }
-        )
+      this.axios.put(`http://localhost:4000/capitals/`, {
+        id: this.editedItem.id,
+        amount: this.editedItem.amount,
+        description: this.editedItem.description,
+        typeOfExpenditure: this.editedItem.typeOfExpenditure,
+        currency: this.editedItem.currency,
+        date: this.editedItem.date,
+      });
       this.close();
     },
   },
-  // beforeMount() {
-  //   this.getData();
-  // },
 };
 </script>
 <style>

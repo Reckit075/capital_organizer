@@ -1,5 +1,12 @@
 <template >
+  <Alert
+    v-if="alertToLogin"
+    success="false"
+    text="Please log in to watch your data.😀"
+    class="alert"
+  ></Alert>
   <v-data-table
+    v-else
     :headers="headers"
     :items="desserts"
     :items-per-page="5"
@@ -84,13 +91,14 @@
     </template>
     <template v-slot:no-data>
       <v-btn color="primary" @click="init"> Reset </v-btn>
-    </template></v-data-table
-  >
+    </template>
+  </v-data-table>
 </template>
 <script>
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import Alert from "../components/Alert";
 
 Vue.use(VueAxios, axios);
 export default {
@@ -98,6 +106,7 @@ export default {
     dialog: false,
     dialogDelete: false,
     editedIndex: -1,
+    alertToLogin: false,
 
     headers: [
       { text: "amount", align: "start", value: "amount" },
@@ -141,7 +150,11 @@ export default {
   },
   methods: {
     init() {
-      this.getData();
+      if (this.$store.state.userId == 0) {
+        this.alertToLogin = true;
+      } else {
+        this.getData();
+      }
     },
     getData() {
       // console.log(this.$store.state.userId);
@@ -205,6 +218,7 @@ export default {
       this.close();
     },
   },
+  components: { Alert },
 };
 </script>
 <style>
